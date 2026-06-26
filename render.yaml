@@ -1,21 +1,10 @@
-# Exported from Render on 2026-06-26T21:09:48Z
-version: "1"
-projects:
-- name: CashLog-WEB
-  type: web
-  environments:
-  - name: Production
-    services:
-      name: CashLog-WEB
-      runtime: node
-      repo: https://github.com/Ahmad-khalaf517/CashLog-WEB
-      plan: free
-      envVars:
-      - key: MONGO_URI
-        sync: false
-      - key: API_VERSION
-        sync: false
-      region: ohio
-      buildCommand: corepack enable && pnpm install && pnpm run build && echo "BUILD DONE" && ls -R dist
-      startCommand: pnpm run start
-      autoDeployTrigger: commit
+services:
+  - type: web
+    name: cashlog-web
+    env: node
+    rootDir: .
+    buildCommand: corepack enable && pnpm install --frozen-lockfile  && pnpm run build && echo "BUILD DONE" && ls -R dist
+    startCommand: pnpm run start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
