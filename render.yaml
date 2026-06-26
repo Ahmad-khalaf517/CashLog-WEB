@@ -6,7 +6,6 @@ projects:
   environments:
   - name: Production
     services:
-    - type: web
       name: CashLog-WEB
       runtime: node
       repo: https://github.com/Ahmad-khalaf517/CashLog-WEB
