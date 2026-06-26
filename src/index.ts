@@ -1,4 +1,7 @@
 import { server, BASE_URL } from "./server";
+import connectDB from "./config/db";
+
+connectDB();
 
 const PORT = process.env.PORT || 3000;
 

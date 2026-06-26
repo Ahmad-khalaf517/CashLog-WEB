@@ -1,14 +1,12 @@
 import { Router } from "express";
-import ExpenseType from "../types/expense-type";
+import { createExpenseTypeSchema } from "../validators/expense-type.validator";
+import { createExpenseType, getExpenseTypes } from "../controllers/expense-type.controller";
+import { validate } from "../middleware/validate.middleware";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  const expenseTypes : ExpenseType[] = [
-    { id: 1, name: "Food", description: "Food expenses" },
-    { id: 2, name: "Transport", description: "Transport expenses" },
-  ];
-  res.json(expenseTypes);
-});
+router.get("/", getExpenseTypes);
+
+router.post("/", validate(createExpenseTypeSchema), createExpenseType);
 
 export default router;
