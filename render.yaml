@@ -17,6 +17,6 @@ projects:
       - key: API_VERSION
         sync: false
       region: ohio
-      buildCommand: corepack enable && pnpm install && pnpm run build
+      buildCommand: corepack enable && pnpm install && pnpm run build && echo "BUILD DONE" && ls -R dist
       startCommand: pnpm run start
       autoDeployTrigger: commit
