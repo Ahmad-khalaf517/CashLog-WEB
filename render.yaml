@@ -17,6 +17,6 @@ projects:
       - key: API_VERSION
         sync: false
       region: ohio
-      buildCommand: pnpm install --frozen-lockfile
+      buildCommand: corepack enable && pnpm install && pnpm run build
       startCommand: pnpm run start
       autoDeployTrigger: commit
