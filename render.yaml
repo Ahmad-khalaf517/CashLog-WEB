@@ -1,0 +1,22 @@
+# Exported from Render on 2026-06-26T21:09:48Z
+version: "1"
+projects:
+- name: CashLog-WEB
+  type: web
+  environments:
+  - name: Production
+    services:
+    - type: web
+      name: CashLog-WEB
+      runtime: node
+      repo: https://github.com/Ahmad-khalaf517/CashLog-WEB
+      plan: free
+      envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: API_VERSION
+        sync: false
+      region: ohio
+      buildCommand: pnpm install --frozen-lockfile
+      startCommand: pnpm run start
+      autoDeployTrigger: commit
