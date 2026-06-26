@@ -4,9 +4,11 @@ interface Expense {
   id: number;
   name: string;
   type: ExpenseType;
-  date: string;
+  type_id: string;
+  date: Date;
   amount: number;
   currency: string;
+  description?: string;
 }
 
 export default Expense;

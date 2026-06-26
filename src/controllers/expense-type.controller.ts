@@ -21,9 +21,6 @@ export const getExpenseTypes = async (
 ) => {
   try {
     const expenseTypes = await ExpenseType.find();
-    expenseTypes.forEach((expenseType) => {
-      expenseType.id = expenseType._id.toString();
-    });
     res.json(expenseTypes);
   } catch (error) {
     next(error);
