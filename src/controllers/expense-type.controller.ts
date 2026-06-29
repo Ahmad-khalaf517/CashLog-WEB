@@ -26,3 +26,52 @@ export const getExpenseTypes = async (
     next(error);
   }
 };
+
+export const getExpenseTypeById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const expenseType = await ExpenseType.findById(req.params.id);
+    if (!expenseType) {
+      return res.status(404).json({ message: "Expense type not found" });
+    }
+    res.json(expenseType);
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+export const updateExpenseType = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const expenseType = await ExpenseType.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true },
+    );
+    if (!expenseType) {
+      return res.status(404).json({ message: "Expense type not found" });
+    }
+    res.json(expenseType);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteExpenseType = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const expenseType = await ExpenseType.findByIdAndDelete(req.params.id);
+    if (!expenseType) {
+      return res.status(404).json({ message: "Expense type not found" });
+    }
+    res.status(204).send();
+  } catch (error) {
+    next(error);
+  }
+};
