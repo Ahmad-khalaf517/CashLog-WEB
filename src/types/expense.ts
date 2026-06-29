@@ -3,8 +3,7 @@ import ExpenseType from "./expense-type";
 interface Expense {
   id: number;
   name: string;
-  type: ExpenseType;
-  type_id: string;
+  expenseType: ExpenseType;
   date: Date;
   amount: number;
   currency: string;
